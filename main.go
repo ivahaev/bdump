@@ -43,7 +43,7 @@ func dump(db *bolt.DB) {
 		os.Exit(1)
 	}
 	dumpFileName := path.Base(fileName)
-	dumpFileName = strings.TrimRight(dumpFileName, path.Ext(dumpFileName)) + "_dump.json"
+	dumpFileName = strings.TrimSuffix(dumpFileName, path.Ext(dumpFileName)) + "_dump.json"
 	err = ioutil.WriteFile(dumpFileName, encoded, 0644)
 	if err != nil {
 		fmt.Println("Can't write dump file", err)
